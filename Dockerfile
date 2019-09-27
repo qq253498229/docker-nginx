@@ -1,7 +1,8 @@
 FROM nginx:1.17.4-alpine
 
-ENV TZ=PRC
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apk --no-cache add tzdata  && \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" > /etc/timezone
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
