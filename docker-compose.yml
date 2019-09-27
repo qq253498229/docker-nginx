@@ -1,0 +1,9 @@
+version: "3"
+services:
+  nginx:
+    image: registry.cn-beijing.aliyuncs.com/wangdali/nginx:1.17.4-alpine
+    build: .
+    ports:
+      - "30188:80"
+    volumes:
+      - "./dist:/usr/share/nginx/html"
